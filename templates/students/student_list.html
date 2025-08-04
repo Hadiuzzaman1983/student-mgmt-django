@@ -1,0 +1,11 @@
+<h1>Student List</h1>
+<a href="{% url 'student_add' %}">➕ Add Student</a>
+<ul>
+  {% for student in students %}
+    <li>
+      {{ student.name }} ({{ student.roll }}) - {{ student.department }}
+      [<a href="{% url 'student_edit' student.id %}">✏️</a>]
+      [<a href="{% url 'student_delete' student.id %}">🗑️</a>]
+    </li>
+  {% endfor %}
+</ul>
