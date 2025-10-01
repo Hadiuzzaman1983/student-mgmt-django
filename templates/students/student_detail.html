@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="bg-white p-6 rounded-lg shadow-md">
+  <h2 class="text-2xl font-bold mb-4">{{ student.user.get_full_name }}</h2>
+  <p><strong>Roll:</strong> {{ student.roll }}</p>
+  <p><strong>Department:</strong> {{ student.department.name }}</p>
+  <p><strong>Semester:</strong> {{ student.semester }}</p>
+
+  <div class="mt-6 space-x-2">
+    <a href="{% url 'student_edit' student.pk %}" 
+       class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Edit</a>
+    <a href="{% url 'student_delete' student.pk %}" 
+       class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete</a>
+  </div>
+</div>
+{% endblock %}

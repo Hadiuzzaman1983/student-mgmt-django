@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MMPI Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-blue-800 text-white min-h-screen p-4 hidden md:block">
+    <h2 class="text-2xl font-bold mb-8">MMPI</h2>
+    <nav class="space-y-4">
+      {% for item in menu %}
+      <a href="{{ item.url }}" class="block py-2 px-3 rounded hover:bg-blue-600">
+        {{ item.label }}
+      </a>
+      {% endfor %}
+    </nav>
+  </aside>
+
+  <!-- Mobile Sidebar Button -->
+  <div class="md:hidden fixed top-4 left-4">
+    <button id="menu-btn" class="bg-blue-700 text-white p-2 rounded">☰</button>
+  </div>
+
+  <!-- Content -->
+  <main class="flex-1 p-6">
+    <!-- Navbar -->
+    <header class="bg-white shadow rounded p-4 flex justify-between items-center mb-6">
+      <h1 class="text-xl font-bold">Dashboard</h1>
+      <a href="/logout/" class="text-red-600 font-semibold">Logout</a>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- Mobile Sidebar -->
+  <div id="mobile-menu" class="fixed top-0 left-0 bg-blue-800 text-white w-64 h-full p-4 transform -translate-x-full transition-transform">
+    <h2 class="text-2xl font-bold mb-8">MMPI</h2>
+    <nav class="space-y-4">
+      {% for item in menu %}
+      <a href="{{ item.url }}" class="block py-2 px-3 rounded hover:bg-blue-600">
+        {{ item.label }}
+      </a>
+      {% endfor %}
+    </nav>
+  </div>
+
+  <script>
+    const btn = document.getElementById("menu-btn");
+    const menu = document.getElementById("mobile-menu");
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("-translate-x-full");
+    });
+  </script>
+</body>
+</html>

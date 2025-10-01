@@ -37,8 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
+    'core',
     'student',
+    'teachers',
+    'tailwind',
+    'theme',
+
 ]
+TAILWIND_APP_NAME = 'theme'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,6 +58,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mmpi.urls'
+
 
 TEMPLATES = [
     {
@@ -69,6 +77,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mmpi.wsgi.application'
 
+
+AUTH_USER_MODEL = 'accounts.User'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases

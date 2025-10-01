@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MMPI College Management</title>
+  <link href="{% static 'css/dist/styles.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-blue-700 text-white p-4 shadow-md flex justify-between">
+    <div class="text-xl font-bold">MMPI College</div>
+    <div>
+      <a href="/" class="px-3 hover:underline">Home</a>
+      <a href="/students/" class="px-3 hover:underline">Students</a>
+      <a href="/teachers/" class="px-3 hover:underline">Teachers</a>
+      <a href="/courses/" class="px-3 hover:underline">Courses</a>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto p-6">
+      {% block content %}
+      {% endblock %}
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-blue-700 text-white p-4 mt-10 text-center">
+    © 2025 Monirampur Model Polytechnic Institute (MMPI)
+  </footer>
+
+</body>
+</html>
