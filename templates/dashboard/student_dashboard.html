@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+  <header class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold">Welcome, {{ request.user.username }}</h1>
+    <a href="{% url 'logout' %}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
+  </header>
+
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <a href="{% url 'student_profile' %}" class="bg-white p-6 rounded shadow hover:shadow-lg transition">
+      <h2 class="text-xl font-semibold mb-2">Profile</h2>
+      <p>View your personal information</p>
+    </a>
+
+    <a href="{% url 'student_courses' %}" class="bg-white p-6 rounded shadow hover:shadow-lg transition">
+      <h2 class="text-xl font-semibold mb-2">Courses</h2>
+      <p>View enrolled courses</p>
+    </a>
+
+    <a href="{% url 'student_results' %}" class="bg-white p-6 rounded shadow hover:shadow-lg transition">
+      <h2 class="text-xl font-semibold mb-2">Results</h2>
+      <p>View your grades and GPA</p>
+    </a>
+
+    <a href="{% url 'student_routine' %}" class="bg-white p-6 rounded shadow hover:shadow-lg transition">
+      <h2 class="text-xl font-semibold mb-2">Class Routine</h2>
+      <p>Check your class schedule</p>
+    </a>
+
+    <a href="{% url 'student_notices' %}" class="bg-white p-6 rounded shadow hover:shadow-lg transition">
+      <h2 class="text-xl font-semibold mb-2">Notices</h2>
+      <p>View important announcements</p>
+    </a>
+  </div>
+</body>
+</html>

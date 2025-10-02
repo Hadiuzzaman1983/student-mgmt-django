@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teacher Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+  <header class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold">Welcome, {{ request.user.username }}</h1>
+    <a href="{% url 'logout' %}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
+  </header>
+
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <a href="{% url 'teacher_class_routine_list' %}" class="bg-white p-6 rounded shadow hover:shadow-lg transition">
+      <h2 class="text-xl font-semibold mb-2">Class Routine</h2>
+      <p>View and manage class schedules</p>
+    </a>
+
+    <a href="{% url 'teacher_grade_list' %}" class="bg-white p-6 rounded shadow hover:shadow-lg transition">
+      <h2 class="text-xl font-semibold mb-2">Grades</h2>
+      <p>Enter and manage student grades</p>
+    </a>
+
+    <a href="{% url 'teacher_assignment_list' %}" class="bg-white p-6 rounded shadow hover:shadow-lg transition">
+      <h2 class="text-xl font-semibold mb-2">Assignments</h2>
+      <p>Upload and manage assignments</p>
+    </a>
+
+    <a href="{% url 'teacher_notice_list' %}" class="bg-white p-6 rounded shadow hover:shadow-lg transition">
+      <h2 class="text-xl font-semibold mb-2">Notices</h2>
+      <p>Post and view notices</p>
+    </a>
+
+    <a href="{% url 'teacher_profile' %}" class="bg-white p-6 rounded shadow hover:shadow-lg transition">
+      <h2 class="text-xl font-semibold mb-2">Profile</h2>
+      <p>View and edit your profile</p>
+    </a>
+  </div>
+</body>
+</html>

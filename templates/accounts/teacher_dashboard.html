@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teacher Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <h1 class="text-3xl font-bold mb-6">Welcome, {{ request.user.username }}</h1>
+
+  <div class="grid grid-cols-3 gap-6">
+    <a href="/teachers/class-routine/" class="bg-white p-6 rounded shadow hover:shadow-lg">Class Routine</a>
+    <a href="/teachers/grades/" class="bg-white p-6 rounded shadow hover:shadow-lg">Grades</a>
+    <a href="/teachers/assignments/" class="bg-white p-6 rounded shadow hover:shadow-lg">Assignments</a>
+    <a href="/teachers/notices/" class="bg-white p-6 rounded shadow hover:shadow-lg">Notices</a>
+    <a href="/teachers/profile/" class="bg-white p-6 rounded shadow hover:shadow-lg">Profile</a>
+    <a href="/logout/" class="bg-red-500 text-white p-6 rounded shadow hover:bg-red-600">Logout</a>
+  </div>
+</body>
+</html>

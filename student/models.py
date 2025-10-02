@@ -6,7 +6,7 @@ class StudentProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     roll = models.CharField(max_length=20, unique=True)
     department = models.CharField(max_length=100)
-    semester = models.IntegerField()
+    semester = models.CharField(max_length=20, null=True, blank=True)
     phone = models.CharField(max_length=20, blank=True)
 
     def __str__(self):
