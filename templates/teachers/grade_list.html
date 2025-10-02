@@ -1,0 +1,27 @@
+{% extends "base_dashboard.html" %}
+{% block title %}Grades{% endblock %}
+
+{% block content %}
+<h2 class="text-xl font-bold mb-4">Grades</h2>
+<a href="{% url 'grade_add' %}" class="bg-green-600 text-white px-4 py-2 rounded">+ Add Grade</a>
+<table class="table-auto w-full mt-4 border">
+  <thead>
+    <tr class="bg-gray-200">
+      <th class="px-4 py-2">Student</th>
+      <th class="px-4 py-2">Subject</th>
+      <th class="px-4 py-2">Marks</th>
+      <th class="px-4 py-2">Grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for g in grades %}
+    <tr class="border">
+      <td class="px-4 py-2">{{ g.student_name }}</td>
+      <td class="px-4 py-2">{{ g.subject }}</td>
+      <td class="px-4 py-2">{{ g.marks }}</td>
+      <td class="px-4 py-2">{{ g.grade }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

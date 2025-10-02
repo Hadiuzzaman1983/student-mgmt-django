@@ -1,0 +1,19 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>📑 নতুন অ্যাসাইনমেন্ট আপলোড করুন</h2>
+
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-primary">⬆️ Upload Assignment</button>
+                <a href="{% url 'assignment_list' %}" class="btn btn-secondary">⬅️ Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto mt-10">
+    <!-- Header -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">👤 আমার প্রোফাইল</h2>
+        <p class="text-gray-500 mt-1">আপনার ব্যক্তিগত তথ্য এখানে দেখানো হচ্ছে</p>
+    </div>
+
+    <!-- Profile Card -->
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <p class="text-gray-600 font-semibold">নাম</p>
+                    <p class="text-gray-800">{{ object.user.username }}</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-gray-600 font-semibold">Roll</p>
+                    <p class="text-gray-800">{{ object.roll }}</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-gray-600 font-semibold">Department</p>
+                    <p class="text-gray-800">{{ object.department }}</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-gray-600 font-semibold">Semester</p>
+                    <p class="text-gray-800">{{ object.semester }}</p>
+                </div>
+                <div class="space-y-2 md:col-span-2">
+                    <p class="text-gray-600 font-semibold">Phone</p>
+                    <p class="text-gray-800">{{ object.phone }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Buttons -->
+        <div class="bg-gray-50 p-4 flex justify-end space-x-2">
+            <a href="{% url 'student_courses' %}" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">কোর্স</a>
+            <a href="{% url 'student_results' %}" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">রেজাল্ট</a>
+            <a href="{% url 'student_routine' %}" class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition">রুটিন</a>
+            <a href="{% url 'student_notices' %}" class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition">নোটিশ</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

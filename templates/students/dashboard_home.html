@@ -1,0 +1,49 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto mt-10">
+    <!-- Header -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 class="text-3xl font-bold text-gray-800">🎓 Student Dashboard</h2>
+        <p class="text-gray-500 mt-2">স্বাগতম, {{ request.user.username }}! নিচের লিঙ্কগুলো থেকে আপনার তথ্য দেখতে পারেন।</p>
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Profile -->
+        <a href="{% url 'student_profile' %}" class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center transition">
+            <div class="text-4xl mb-2">👤</div>
+            <h3 class="text-lg font-semibold">Profile</h3>
+            <p class="text-sm mt-1 text-blue-100">আপনার প্রোফাইল দেখুন</p>
+        </a>
+
+        <!-- Courses -->
+        <a href="{% url 'student_courses' %}" class="bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center transition">
+            <div class="text-4xl mb-2">📘</div>
+            <h3 class="text-lg font-semibold">Courses</h3>
+            <p class="text-sm mt-1 text-green-100">আপনার কোর্সের তালিকা</p>
+        </a>
+
+        <!-- Results -->
+        <a href="{% url 'student_results' %}" class="bg-purple-500 hover:bg-purple-600 text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center transition">
+            <div class="text-4xl mb-2">📊</div>
+            <h3 class="text-lg font-semibold">Results</h3>
+            <p class="text-sm mt-1 text-purple-100">আপনার রেজাল্ট দেখুন</p>
+        </a>
+
+        <!-- Routine -->
+        <a href="{% url 'student_routine' %}" class="bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center transition">
+            <div class="text-4xl mb-2">📅</div>
+            <h3 class="text-lg font-semibold">Routine</h3>
+            <p class="text-sm mt-1 text-yellow-100">আপনার ক্লাস রুটিন দেখুন</p>
+        </a>
+
+        <!-- Notices -->
+        <a href="{% url 'student_notices' %}" class="bg-red-500 hover:bg-red-600 text-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center transition">
+            <div class="text-4xl mb-2">📢</div>
+            <h3 class="text-lg font-semibold">Notices</h3>
+            <p class="text-sm mt-1 text-red-100">নতুন নোটিশ দেখুন</p>
+        </a>
+    </div>
+</div>
+{% endblock %}

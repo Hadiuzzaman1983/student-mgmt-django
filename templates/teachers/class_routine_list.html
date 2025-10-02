@@ -1,0 +1,46 @@
+{% extends 'base_dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-3">ক্লাস রুটিন তালিকা</h2>
+
+    <a href="{% url 'class_routine_create' %}" class="btn btn-primary mb-3">➕ নতুন রুটিন যুক্ত করুন</a>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>বিষয়</th>
+                        <th>শিক্ষক</th>
+                        <th>সেমিস্টার</th>
+                        <th>দিন</th>
+                        <th>সময়</th>
+                        <th>কর্ম</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for routine in routines %}
+                        <tr>
+                            <td>{{ routine.subject }}</td>
+                            <td>{{ routine.teacher }}</td>
+                            <td>{{ routine.semester }}</td>
+                            <td>{{ routine.day }}</td>
+                            <td>{{ routine.time }}</td>
+                            <td>
+                                <a href="{% url 'class_routine_update' routine.id %}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{% url 'class_routine_delete' routine.id %}" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">⚠️ কোনো রুটিন যুক্ত করা হয়নি।</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

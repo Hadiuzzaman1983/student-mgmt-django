@@ -1,0 +1,16 @@
+{% extends "base_dashboard.html" %}
+{% block title %}Assignments{% endblock %}
+
+{% block content %}
+<h2 class="text-xl font-bold mb-4">Assignments</h2>
+<a href="{% url 'assignment_add' %}" class="bg-purple-600 text-white px-4 py-2 rounded">+ Upload Assignment</a>
+<ul class="mt-4">
+  {% for a in assignments %}
+  <li class="border p-2 mb-2">
+    <strong>{{ a.title }}</strong> - {{ a.created_at|date:"M d, Y" }}
+    <br>
+    <a href="{{ a.file.url }}" class="text-blue-500 underline">Download</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>📊 ছাত্রের গ্রেড এন্ট্রি করুন</h2>
+
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-success">💾 Save Grade</button>
+                <a href="{% url 'grade_list' %}" class="btn btn-secondary">⬅️ Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
