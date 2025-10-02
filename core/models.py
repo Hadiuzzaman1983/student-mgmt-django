@@ -14,13 +14,22 @@ class Department(models.Model):
 
 # Teacher Model
 class Teacher(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="core_teacher"
+    )
     employee_id = models.CharField(max_length=20, unique=True)
+    full_name = models.CharField(max_length=100)
     department = models.CharField(max_length=50)
+    subject = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
     phone = models.CharField(max_length=20, blank=True)
+
     # অন্যান্য প্রয়োজনীয় ফিল্ড
     def __str__(self):
-        return f"{self.user.username} ({self.employee_id})"
+        return self.full_name
+
 
 # Student Model
 class Student(models.Model):

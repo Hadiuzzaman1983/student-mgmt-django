@@ -1,0 +1,17 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+<div class="container mx-auto mt-8 max-w-lg">
+    <h1 class="text-2xl font-bold mb-6">My Profile</h1>
+    <div class="bg-white p-6 rounded shadow">
+        <p><strong>Full Name:</strong> {{ teacher.full_name }}</p>
+        <p><strong>Department:</strong> {{ teacher.department }}</p>
+        <p><strong>Subject:</strong> {{ teacher.subject }}</p>
+        <p><strong>Email:</strong> {{ teacher.email }}</p>
+        <p><strong>Phone:</strong> {{ teacher.phone }}</p>
+        <div class="mt-4">
+            <a href="{% url 'teacher_profile_edit' %}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Edit Profile</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

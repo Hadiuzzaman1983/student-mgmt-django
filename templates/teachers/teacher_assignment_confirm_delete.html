@@ -1,0 +1,13 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+<div class="container mx-auto mt-8 max-w-lg">
+    <h1 class="text-2xl font-bold mb-4">Delete Assignment</h1>
+    <p>Are you sure you want to delete the assignment: <strong>{{ object.title }}</strong>?</p>
+    <form method="POST" class="mt-4">
+        {% csrf_token %}
+        <button type="submit" class="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600">Yes, Delete</button>
+        <a href="{% url 'teacher_assignment_list' %}" class="ml-2 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">Cancel</a>
+    </form>
+</div>
+{% endblock %}

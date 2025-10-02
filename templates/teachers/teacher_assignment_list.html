@@ -1,0 +1,30 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+<div class="container mx-auto mt-8">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold">My Assignments</h1>
+        <a href="{% url 'teacher_assignment_create' %}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add Assignment</a>
+    </div>
+    {% if assignments %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for assignment in assignments %}
+            <div class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+                <h2 class="text-xl font-semibold">{{ assignment.title }}</h2>
+                <p class="text-gray-600 mt-2">{{ assignment.description|truncatechars:100 }}</p>
+                <p class="text-sm text-gray-500 mt-1">Created: {{ assignment.created_at|date:"d M Y" }}</p>
+                {% if assignment.file %}
+                <a href="{{ assignment.file.url }}" class="text-blue-600 hover:underline mt-2 inline-block">Download File</a>
+                {% endif %}
+                <div class="mt-4 flex gap-2">
+                    <a href="{% url 'teacher_assignment_update' assignment.pk %}" class="bg-yellow-400 px-3 py-1 rounded hover:bg-yellow-500">Edit</a>
+                    <a href="{% url 'teacher_assignment_delete' assignment.pk %}" class="bg-red-500 px-3 py-1 rounded text-white hover:bg-red-600">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-gray-500">No assignments found.</p>
+    {% endif %}
+</div>
+{% endblock %}

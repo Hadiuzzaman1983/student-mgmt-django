@@ -1,8 +1,24 @@
 from django.db import models
 from django.conf import settings
-from .models Teacher
 
-# Teacher Model ধরে নেওয়া হচ্ছে আগে থেকেই আছে
+
+class Teacher(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="teacher_profile"
+    )
+    employee_id = models.CharField(max_length=20, unique=True)
+    full_name = models.CharField(max_length=100)
+    department = models.CharField(max_length=50)
+    subject = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    phone = models.CharField(max_length=20, blank=True)
+
+    # অন্যান্য প্রয়োজনীয় ফিল্ড
+    def __str__(self):
+        return self.full_name
+
 
 # ক্লাস রুটিন
 class ClassRoutine(models.Model):
@@ -48,3 +64,12 @@ class Assignment(models.Model):
     def __str__(self):
         return self.title
 
+
+class Notice(models.Model):
+    teacher = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

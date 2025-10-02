@@ -1,6 +1,12 @@
 from django.contrib import admin
-from .models import ClassRoutine, Grade, Assignment
+from .models import ClassRoutine, Grade, Assignment, Teacher
 
+
+@admin.register(Teacher)
+class TeacherAdmin(admin.ModelAdmin):
+    list_display = ("id", "employee_id", "full_name", "department", "subject", "email", "phone")
+    search_fields = ("employee_id", "full_name", "department", "subject", "email")
+    list_filter = ("department", "subject")
 
 @admin.register(ClassRoutine)
 class ClassRoutineAdmin(admin.ModelAdmin):
@@ -16,7 +22,6 @@ class GradeAdmin(admin.ModelAdmin):
 class AssignmentAdmin(admin.ModelAdmin):
     list_display = ('title', 'teacher', 'created_at')
     search_fields = ('title',)
-
 
 
 
