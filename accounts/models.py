@@ -9,3 +9,12 @@ class CustomUser(AbstractUser):
         ('student', 'Student'),
     )
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='student')
+
+    def is_admin(self):
+        return self.role == 'admin'
+
+    def is_teacher(self):
+        return self.role == 'teacher'
+
+    def is_student(self):
+        return self.role == 'student'

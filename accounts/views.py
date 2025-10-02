@@ -3,6 +3,13 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.views.generic import TemplateView
+from accounts.mixins import AdminRequiredMixin, TeacherRequiredMixin, StudentRequiredMixin
+from accounts.decorators import admin_required
+
+@admin_required
+def admin_home(request):
+    return render(request, 'dashboard/admin_dashboard.html')
 
 class LoginView(View):
     def get(self, request):
@@ -35,3 +42,12 @@ class DashboardView(LoginRequiredMixin, View):
         else:
             template = 'dashboard/default_dashboard.html'
         return render(request, template)
+
+class AdminDashboardView(AdminRequiredMixin, TemplateView):
+    template_name = "dashboard/admin_dashboard.html"
+
+class TeacherDashboardView(TeacherRequiredMixin, TemplateView):
+    template_name = "dashboard/teacher_dashboard.html"
+
+class StudentDashboardView(StudentRequiredMixin, TemplateView):
+    template_name = "dashboard/student_dashboard.html"

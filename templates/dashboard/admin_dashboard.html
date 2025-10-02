@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="min-h-screen bg-gray-100 p-6">
+  <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <!-- Manage Teachers -->
+    <a href="{% url 'admin_teacher_list' %}" class="bg-white shadow-md rounded-lg p-6 hover:bg-green-50 transition">
+      <h2 class="text-xl font-semibold mb-2">Teachers</h2>
+      <p>View and manage all teachers</p>
+    </a>
+
+    <!-- Manage Students -->
+    <a href="{% url 'admin_student_list' %}" class="bg-white shadow-md rounded-lg p-6 hover:bg-green-50 transition">
+      <h2 class="text-xl font-semibold mb-2">Students</h2>
+      <p>View and manage all students</p>
+    </a>
+
+    <!-- Manage Courses -->
+    <a href="{% url 'admin_course_list' %}" class="bg-white shadow-md rounded-lg p-6 hover:bg-green-50 transition">
+      <h2 class="text-xl font-semibold mb-2">Courses</h2>
+      <p>Manage courses and classes</p>
+    </a>
+
+    <!-- Manage Assignments -->
+    <a href="{% url 'admin_assignment_list' %}" class="bg-white shadow-md rounded-lg p-6 hover:bg-green-50 transition">
+      <h2 class="text-xl font-semibold mb-2">Assignments</h2>
+      <p>View or assign tasks</p>
+    </a>
+
+    <!-- Manage Notices -->
+    <a href="{% url 'admin_notice_list' %}" class="bg-white shadow-md rounded-lg p-6 hover:bg-green-50 transition">
+      <h2 class="text-xl font-semibold mb-2">Notices</h2>
+      <p>Create and manage notices</p>
+    </a>
+
+    <!-- Manage Class Routine -->
+    <a href="{% url 'admin_class_routine_list' %}" class="bg-white shadow-md rounded-lg p-6 hover:bg-green-50 transition">
+      <h2 class="text-xl font-semibold mb-2">Class Routine</h2>
+      <p>Manage class schedules</p>
+    </a>
+
+    <!-- Manage Grades -->
+    <a href="{% url 'admin_grade_list' %}" class="bg-white shadow-md rounded-lg p-6 hover:bg-green-50 transition">
+      <h2 class="text-xl font-semibold mb-2">Grades</h2>
+      <p>Manage student grades</p>
+    </a>
+  </div>
+</div>
+{% endblock %}
