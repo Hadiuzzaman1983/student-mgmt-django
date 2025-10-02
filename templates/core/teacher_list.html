@@ -1,0 +1,32 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Teachers</h1>
+<a href="{% url 'teacher_add' %}" class="bg-green-600 text-white px-3 py-2 rounded">Add Teacher</a>
+<table class="w-full mt-4 bg-white rounded shadow">
+  <thead class="bg-blue-600 text-white">
+    <tr>
+      <th class="py-2 px-4">Name</th>
+      <th class="py-2 px-4">Email</th>
+      <th class="py-2 px-4">Phone</th>
+      <th class="py-2 px-4">Department</th>
+      <th class="py-2 px-4">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for teacher in object_list %}
+    <tr class="border-b">
+      <td class="py-2 px-4">{{ teacher.name }}</td>
+      <td class="py-2 px-4">{{ teacher.email }}</td>
+      <td class="py-2 px-4">{{ teacher.phone }}</td>
+      <td class="py-2 px-4">{{ teacher.department }}</td>
+      <td class="py-2 px-4">
+        <a href="{% url 'teacher_edit' teacher.pk %}" class="text-blue-600">Edit</a> |
+        <a href="{% url 'teacher_delete' teacher.pk %}" class="text-red-600">Delete</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5" class="text-center py-4">No Teachers Found</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

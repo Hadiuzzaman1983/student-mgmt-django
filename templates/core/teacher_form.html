@@ -1,0 +1,56 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}{% if object %}Edit Teacher{% else %}Add Teacher{% endif %}{% endblock %}
+{% block header %}{% if object %}Edit Teacher{% else %}Add Teacher{% endif %}{% endblock %}
+
+{% block content %}
+<div class="bg-white shadow-lg rounded-lg p-6 max-w-lg mx-auto">
+    <form method="post" class="space-y-4">
+        {% csrf_token %}
+
+        <!-- User Field -->
+        <div>
+            <label class="block text-gray-700 font-semibold mb-1">User</label>
+            {{ form.user }}
+            {% if form.user.errors %}
+                <p class="text-red-600 text-sm">{{ form.user.errors }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Employee ID Field -->
+        <div>
+            <label class="block text-gray-700 font-semibold mb-1">Employee ID</label>
+            {{ form.employee_id }}
+            {% if form.employee_id.errors %}
+                <p class="text-red-600 text-sm">{{ form.employee_id.errors }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Department Field -->
+        <div>
+            <label class="block text-gray-700 font-semibold mb-1">Department</label>
+            {{ form.department }}
+            {% if form.department.errors %}
+                <p class="text-red-600 text-sm">{{ form.department.errors }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Phone Field -->
+        <div>
+            <label class="block text-gray-700 font-semibold mb-1">Phone</label>
+            {{ form.phone }}
+            {% if form.phone.errors %}
+                <p class="text-red-600 text-sm">{{ form.phone.errors }}</p>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+            {% if object %}Update{% else %}Add{% endif %}
+        </button>
+    </form>
+
+    <div class="mt-4 text-center">
+        <a href="{% url 'teacher_list' %}" class="text-blue-600 hover:underline">Back to Teacher List</a>
+    </div>
+</div>
+{% endblock %}

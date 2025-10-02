@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Department List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+
+<div class="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Department List</h2>
+
+    <table class="w-full border border-gray-200 divide-y divide-gray-200">
+        <thead class="bg-gray-100">
+            <tr>
+                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">#</th>
+                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Name</th>
+                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Code</th>
+                <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+            {% for department in departments %}
+            <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">{{ forloop.counter }}</td>
+                <td class="px-4 py-2">{{ department.name }}</td>
+                <td class="px-4 py-2">{{ department.code }}</td>
+                <td class="px-4 py-2">
+                    <a href="{% url 'department_update' department.id %}" class="text-blue-600 hover:underline">Edit</a> |
+                    <a href="{% url 'department_delete' department.id %}" class="text-red-600 hover:underline">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="px-4 py-4 text-center text-gray-500">No departments found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="mt-6 text-right">
+        <a href="{% url 'department_create' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+            + Add Department
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

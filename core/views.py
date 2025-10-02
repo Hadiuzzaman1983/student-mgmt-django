@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Student, Teacher, Department, Course
+from .models import *
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
@@ -37,6 +37,65 @@ def student_dashboard(request):
     ]
     return render(request, "core/student_dashboard.html", {"menu": menu})
 
+
+# Department Views
+class DepartmentListView(ListView):
+    model = Department
+    template_name = "core/department_list.html"
+    context_object_name = "departments"
+
+class DepartmentDetailView(DetailView):
+    model = Department
+    template_name = "core/Department_detail.html"
+    context_object_name = "Department"
+
+class DepartmentCreateView(CreateView):
+    model = Department
+    fields = ["name", "code"]  # model অনুযায়ী
+    template_name = "core/department_form.html"
+    success_url = reverse_lazy("department_list")
+
+class DepartmentUpdateView(UpdateView):
+    model = Department
+    fields = ["name", "code"]
+    template_name = "core/department_form.html"
+    success_url = reverse_lazy("department_list")
+
+class DepartmentDeleteView(DeleteView):
+    model = Department
+    template_name = "core/department_confirm_delete.html"
+    success_url = reverse_lazy("department_list")
+
+
+
+# Teacher Views
+class TeacherListView(ListView):
+    model = Teacher
+    template_name = "core/teacher_list.html"
+
+class TeacherDetailView(DetailView):
+    model = Teacher
+    template_name = "core/Teacher_detail.html"
+    context_object_name = "Teacher"
+
+class TeacherCreateView(CreateView):
+    model = Teacher
+    fields = ["user", "employee_id", "department", "phone"]
+    template_name = "core/teacher_form.html"
+    success_url = reverse_lazy("teacher_list")
+
+class TeacherUpdateView(UpdateView):
+    model = Teacher
+    fields = ["user", "employee_id", "department", "phone"]
+    template_name = "core/teacher_form.html"
+    success_url = reverse_lazy("teacher_list")
+
+class TeacherDeleteView(DeleteView):
+    model = Teacher
+    template_name = "core/confirm_delete.html"
+    success_url = reverse_lazy("teacher_list")
+
+
 # Student List View
 class StudentListView(ListView):
     model = Student
@@ -52,14 +111,14 @@ class StudentDetailView(DetailView):
 # Student Create View
 class StudentCreateView(CreateView):
     model = Student
-    fields = ["user", "roll", "department", "semester"]
+    fields = ["user", "roll_number", "department", "phone"]
     template_name = "core/student_form.html"
     success_url = reverse_lazy("student_list")
 
 # Student Update View
 class StudentUpdateView(UpdateView):
     model = Student
-    fields = ["user", "roll", "department", "semester"]
+    fields = ["user", "roll_number", "department", "phone"]
     template_name = "core/student_form.html"
     success_url = reverse_lazy("student_list")
 

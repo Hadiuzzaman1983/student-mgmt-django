@@ -1,0 +1,46 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+
+    <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Student List</h2>
+
+        <table class="w-full border border-gray-200 divide-y divide-gray-200">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">#</th>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Name</th>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Roll</th>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Department</th>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Semester</th>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+                {% for student in students %}
+                <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-2 text-sm text-gray-700">{{ forloop.counter }}</td>
+                    <td class="px-4 py-2 text-sm text-gray-700">{{ student.name }}</td>
+                    <td class="px-4 py-2 text-sm text-gray-700">{{ student.roll }}</td>
+                    <td class="px-4 py-2 text-sm text-gray-700">{{ student.department.name }}</td>
+                    <td class="px-4 py-2 text-sm text-gray-700">{{ student.semester }}</td>
+                    <td class="px-4 py-2">
+                        <a href="{% url 'student_detail' student.id %}" class="text-blue-600 hover:underline">View</a> |
+                        <a href="{% url 'student_update' student.id %}" class="text-green-600 hover:underline">Edit</a> |
+                        <a href="{% url 'student_delete' student.id %}" class="text-red-600 hover:underline">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="px-4 py-4 text-center text-gray-500">No students found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="mt-6 text-right">
+            <a href="{% url 'student_create' %}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                + Add Student
+            </a>
+        </div>
+    </div>
+{% endblock %}
